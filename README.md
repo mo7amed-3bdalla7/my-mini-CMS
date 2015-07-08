@@ -1,2 +1,2 @@
-# my-mini-CMS-
+# my-mini-CMS
 a simple php cms
