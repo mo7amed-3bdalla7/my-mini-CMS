@@ -48,10 +48,10 @@ function myAutoload($class) {
 spl_autoload_register ( 'myAutoload' );
 
 // database Auth
-define ( 'DB_NAME', 'project' );
-define ( 'DB_HOST', 'localhost' );
-define ( 'DB_ROOT', 'root' );
-define ( 'DB_PASS', '' );
+define ( 'DB_NAME', '****' );
+define ( 'DB_HOST', '****' );
+define ( 'DB_ROOT', '****' );
+define ( 'DB_PASS', '****' );
 
 // Database Connection
 $dbo = database::get_instance ();
