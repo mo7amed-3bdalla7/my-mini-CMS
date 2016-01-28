@@ -52,6 +52,9 @@
               <ul class="sub">
                 <li <?php $this->highlight_menu('news'); ?> ><a   href="cpanel?view=news">News</a></li>
               </ul>
+              <ul class="sub">
+                <li <?php $this->highlight_menu('newsBar'); ?> ><a   href="cpanel?view=newsBar">News Bar</a></li>
+              </ul>
             </li>
             <li class="sub-menu">
               <a <?php $this->highlight_menu('comments'); ?> href="javascript:;" >

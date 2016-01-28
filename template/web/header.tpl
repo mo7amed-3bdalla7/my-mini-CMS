@@ -1,6 +1,18 @@
 <div id="top-navigation">
   <div class="container">
+    <marquee style="background-color:#333;font-size:25px;padding:5px;"><?php
     
+    
+    $allNewsBar = newsBar::read ( 'SELECT * FROM newsBar ', PDO::FETCH_CLASS, 'newsBar' );
+    if (is_object ( $allNewsBar )) {
+    	echo '<span>'.$allNewsBar->content.'</span>';
+    	}else{
+    	
+    	foreach($allNewsBar as $content)
+    		echo '<span>'.$content->content.'</span>#### ';
+    	}
+    	
+    ?></marquee>
     <!-- Navigation -->
     <ul class="nav-menu pull-left">
       <li class="active"><a href="">Home</a></li>
