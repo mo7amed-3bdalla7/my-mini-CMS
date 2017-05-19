@@ -1,12 +1,12 @@
 <?php
-if (isset ( $_POST ['submit'] )) {
-	$username = $_POST ['username'];
-	$password = $_POST ['password'];
-	if (! user::auth ( $username, $password ))
-		
-		$msg = '<div class="alert alert-error">
+if (isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    if (!user::auth($username, $password)) {
+        $msg = '<div class="alert alert-error">
       <button type="button" class="close" data-dismiss="alert">×</button>
       <h4>Error!</h4><ul class="list-arrow-bold"> username or  password not corrrect or you you may be disabled.</ul></div>';
+    }
 }
 
 ?>

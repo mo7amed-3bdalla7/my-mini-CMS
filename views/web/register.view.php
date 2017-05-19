@@ -1,44 +1,44 @@
 <?php
-if (isset ( $_POST ['submit'] )) {
-	$user = new user ( $_POST ['username'] );
-	$user->password = $_POST ['password'];
-	$user->email = $_POST ['email'];
-	$user->gender = $_POST ['gender'];
-	$cpassword = $_POST ['cpassword'];
-	$cemail = $_POST ['cemail'];
-	if ($user->user_exist ()) {
-		$msg .= '<li>username exists.</li>';
-	}
-	if ($user->email_exist ()) {
-		$msg .= '<li>email exists.</li>';
-	}
-	if ($user->email != $cemail) {
-		$msg .= '<li>email not equal confirm email.</li>';
-	}
-	if ($user->password != $cpassword) {
-		$msg .= '<li>password not equal confirm password.</li>';
-	}
-	if (empty ( $msg )) {
-		$user->password = md5 ( $user->username . $user->password . SAULT );
-		$user->status = 0;
-		$user->activation = md5 ( $user->username . $user->password . $user->email . SAULT . time () );
-		$user->privilege = 0;
-		if ($user->save ()) {
-			$message = 'please go to the link to activate your account.. <a href="'  . HOST_NAME . '?view=activation&key=' . $user->activation.'" >Click here</a>';
-			if (! mail ( $user->email, 'Activation of the account .', $message )) {
-				echo $message;
-			}
-			$msg = '<div class="alert alert-success">
+if (isset($_POST['submit'])) {
+    $user = new user($_POST['username']);
+    $user->password = $_POST['password'];
+    $user->email = $_POST['email'];
+    $user->gender = $_POST['gender'];
+    $cpassword = $_POST['cpassword'];
+    $cemail = $_POST['cemail'];
+    if ($user->user_exist()) {
+        $msg .= '<li>username exists.</li>';
+    }
+    if ($user->email_exist()) {
+        $msg .= '<li>email exists.</li>';
+    }
+    if ($user->email != $cemail) {
+        $msg .= '<li>email not equal confirm email.</li>';
+    }
+    if ($user->password != $cpassword) {
+        $msg .= '<li>password not equal confirm password.</li>';
+    }
+    if (empty($msg)) {
+        $user->password = md5($user->username.$user->password.SAULT);
+        $user->status = 0;
+        $user->activation = md5($user->username.$user->password.$user->email.SAULT.time());
+        $user->privilege = 0;
+        if ($user->save()) {
+            $message = 'please go to the link to activate your account.. <a href="'.HOST_NAME.'?view=activation&key='.$user->activation.'" >Click here</a>';
+            if (!mail($user->email, 'Activation of the account .', $message)) {
+                echo $message;
+            }
+            $msg = '<div class="alert alert-success">
       <button type="button" class="close" data-dismiss="alert">×</button>
       <h4>Success!</h4>
       User inserted successfully ..
      </div>';
-		}
-	} else {
-		$msg = '<div class="alert alert-error">
+        }
+    } else {
+        $msg = '<div class="alert alert-error">
       <button type="button" class="close" data-dismiss="alert">×</button>
-      <h4>Error!</h4><ul class="list-arrow-bold">' . $msg . '</ul></div>';
-	}
+      <h4>Error!</h4><ul class="list-arrow-bold">'.$msg.'</ul></div>';
+    }
 }
 ?>
 <div id="main" class="span8 contact-page image-preloader">
