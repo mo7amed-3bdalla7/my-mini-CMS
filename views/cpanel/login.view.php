@@ -1,14 +1,14 @@
 
 <?php
-if (isset ( $_POST ['submit'] )) {
-	$username = $_POST ['username'];
-	$password = $_POST ['password'];
-	if (! user::admin_auth( $username, $password ))
-		
-		$msg = '<div class="alert alert-danger alert-dismissable">
+if (isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    if (!user::admin_auth($username, $password)) {
+        $msg = '<div class="alert alert-danger alert-dismissable">
 						  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						  <strong>Error!</strong> 
 						username or  password not corrrect or you you may be disabled.</div>';
+    }
 }
 
 ?>

@@ -4,62 +4,61 @@
 	<div class="row-fluid">
 
 		<?php
-		$allnews = news::read ( 'SELECT * FROM news ', PDO::FETCH_CLASS, 'news' );
-		
-		if (is_object ( $allnews )) {
-			echo '<!-- One --><div class="span6 post no-margin-left">	
+        $allnews = news::read('SELECT * FROM news ', PDO::FETCH_CLASS, 'news');
+
+        if (is_object($allnews)) {
+            echo '<!-- One --><div class="span6 post no-margin-left">	
 			<figure>
 				<img src="template/web/images/content/600/1.jpg" alt="Thumbnail 1" />
 				<div class="cat-name">
-					<span class="base">' . $allnews->cat . '</span> <span class="arrow"></span>
+					<span class="base">'.$allnews->cat.'</span> <span class="arrow"></span>
 				</div>
 			</figure>
 			<div class="text">
 				<h2>
 					<a href="single_post.html"
-						title="View permalink Camerette - Your Time to Dream">' . $allnews->title . '</a>
+						title="View permalink Camerette - Your Time to Dream">'.$allnews->title.'</a>
 				</h2>
-				<p>' . $allnews->content . '.</p>
+				<p>'.$allnews->content.'.</p>
 				<div class="meta">
-					By <a href="?view=author&id=' . $allnewss->user_id . '">' . user::read ( 'SELECT *FROM users where id=' . $allnews->user_id, PDO::FETCH_CLASS, __class__ )->username . '</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+					By <a href="?view=author&id='.$allnewss->user_id.'">'.user::read('SELECT *FROM users where id='.$allnews->user_id, PDO::FETCH_CLASS, __CLASS__)->username.'</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 							Jan.14, 2013&nbsp;&nbsp;|&nbsp;&nbsp;<a href="single_post.html">15
 						comments</a>
 				</div>
 			</div>
 		</div>';
-		} else {
-			$i = 1;
-			$clear = '';
-			foreach ( $allnews as $news ) {
-				$date = strtotime($news->created);
-				$s_news = '
+        } else {
+            $i = 1;
+            $clear = '';
+            foreach ($allnews as $news) {
+                $date = strtotime($news->created);
+                $s_news = '
 			<figure>
 				<img src="template/web/images/content/600/1.jpg" alt="Thumbnail 1" />
 				<div class="cat-name">
-					<span class="base">' . $news->cat . '</span> <span class="arrow"></span>
+					<span class="base">'.$news->cat.'</span> <span class="arrow"></span>
 				</div>
 			</figure>
 			<div class="text">
 				<h2>
 					<a href="single_post.html"
-						title="View permalink Camerette - Your Time to Dream">' . $news->title . '</a>
+						title="View permalink Camerette - Your Time to Dream">'.$news->title.'</a>
 				</h2>
-				<p>' . substr ( $news->content, 0, 100 ) . '...</p>
+				<p>'.substr($news->content, 0, 100).'...</p>
 				<div class="meta">
-					By <a href="?view=author&id=' . $news->user_id . '">' . user::read ( 'SELECT *FROM users where id=' . $news->user_id, PDO::FETCH_CLASS, __class__ )->username . '</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+					By <a href="?view=author&id='.$news->user_id.'">'.user::read('SELECT *FROM users where id='.$news->user_id, PDO::FETCH_CLASS, __CLASS__)->username.'</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 							'.
-							
-							
-						date("M.j, Y", $date)
-							
-							.'&nbsp;&nbsp;|&nbsp;&nbsp;<a href="?view=single_post&id=' . $news->id . '">15
+
+                        date('M.j, Y', $date)
+
+                            .'&nbsp;&nbsp;|&nbsp;&nbsp;<a href="?view=single_post&id='.$news->id.'">15
 						comments</a>
 				</div>
 			</div>
 		</div>';
-				if ($i % 2 != 0) {
-					if ($i == 3) {
-						echo '<div class="span6 post no-margin-left">' . $s_news . '<!-- Review Posts -->
+                if ($i % 2 != 0) {
+                    if ($i == 3) {
+                        echo '<div class="span6 post no-margin-left">'.$s_news.'<!-- Review Posts -->
 		<div class="span6 home-reviews">
 
 			<!-- Header -->
@@ -143,18 +142,19 @@
 			</div>
 
 		</div><div class="clearfix ie-sep"></div>';
-						$i --;
-					} else
-						echo '<!-- One --><div class="span6 post no-margin-left">' . $s_news;
-				} else {
-					echo '<!-- One --><div class="span6 post">' . $s_news . '<div class="clearfix ie-sep"></div>';
-				}
-				
-				$i ++;
-			}
-		}
-		
-		?>
+                        $i--;
+                    } else {
+                        echo '<!-- One --><div class="span6 post no-margin-left">'.$s_news;
+                    }
+                } else {
+                    echo '<!-- One --><div class="span6 post">'.$s_news.'<div class="clearfix ie-sep"></div>';
+                }
+
+                $i++;
+            }
+        }
+
+        ?>
 		<div class="clearfix ie-sep"></div>
 		<!-- Clearfix -->
 
